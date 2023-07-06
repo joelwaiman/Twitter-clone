@@ -1,23 +1,31 @@
 import React from 'react';
 import './sidebar.css'
+import { FaTwitter, FaRegEnvelope, FaListUl, FaRegBookmark } from 'react-icons/fa';
+import { RiHome7Fill } from "react-icons/ri";
+import { IoNotificationsOutline, IoPersonOutline, IoSearch } from "react-icons/io5";
 
 const Sidebar = () => {
 
     const navbar = [
-        {name: 'Inicio'},
-        {name: 'Explorar'},
-        {name: 'Notificaciones'},
-        {name: 'Mensajes'},
-        {name: 'Listas'},
-        {name: 'Guardado'},
-        {name: 'Perfil'},
-        {name: 'Mas opciones'},
+        { name: 'Inicio', icon: < RiHome7Fill /> },
+        { name: 'Explorar', icon: <IoSearch/>},
+        { name: 'Notificaciones', icon: <IoNotificationsOutline/>},
+        { name: 'Mensajes', icon: <FaRegEnvelope/>},
+        { name: 'Listas', icon: <FaListUl/>},
+        { name: 'Guardado', icon: <FaRegBookmark/>},
+        { name: 'Perfil', icon: <IoPersonOutline/>},
     ]
 
-    return(
+    return (
         <div className='menu'>
-            {navbar.map((element)=>{
-                return <li className='menu-items'>{element.name}</li>
+            <FaTwitter className='menu-logo' />
+            {navbar.map((element) => {
+                return <>
+                    <div className='menu-items'>
+                        <p className='menu-items-icon'>{element.icon}</p>
+                        <p>{element.name}</p>
+                    </div>
+                </>
             })}
         </div>
     )

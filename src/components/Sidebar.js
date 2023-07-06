@@ -7,25 +7,23 @@ import { IoNotificationsOutline, IoPersonOutline, IoSearch } from "react-icons/i
 const Sidebar = () => {
 
     const navbar = [
-        { name: 'Inicio', icon: < RiHome7Fill /> },
-        { name: 'Explorar', icon: <IoSearch/>},
-        { name: 'Notificaciones', icon: <IoNotificationsOutline/>},
-        { name: 'Mensajes', icon: <FaRegEnvelope/>},
-        { name: 'Listas', icon: <FaListUl/>},
-        { name: 'Guardado', icon: <FaRegBookmark/>},
-        { name: 'Perfil', icon: <IoPersonOutline/>},
+        { id:0 ,name: 'Inicio', icon: < RiHome7Fill /> },
+        { id:1 ,name: 'Explorar', icon: <IoSearch/>},
+        { id:2 ,name: 'Notificaciones', icon: <IoNotificationsOutline/>},
+        { id:3 ,name: 'Mensajes', icon: <FaRegEnvelope/>},
+        { id:4 ,name: 'Listas', icon: <FaListUl/>},
+        { id:5 ,name: 'Guardado', icon: <FaRegBookmark/>},
+        { id:6 ,name: 'Perfil', icon: <IoPersonOutline/>},
     ]
 
     return (
         <div className='menu'>
             <FaTwitter className='menu-logo' />
             {navbar.map((element) => {
-                return <>
-                    <div className='menu-items'>
+                return <div className='menu-items' key={element.id}>
                         <p className='menu-items-icon'>{element.icon}</p>
                         <p>{element.name}</p>
                     </div>
-                </>
             })}
         </div>
     )

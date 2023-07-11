@@ -2,6 +2,7 @@ import React from 'react';
 import './feed.css'
 import { useState } from 'react';
 import img from '../assets/user.jpg'
+import { FaRetweet, FaRegComment, FaRegHeart, FaRegTrashCan } from "react-icons/fa6";
 import { IoLocationOutline, IoImageOutline } from "react-icons/io5";
 import { BsFiletypeGif, BsListUl, BsEmojiSmile } from "react-icons/bs";
 
@@ -17,17 +18,26 @@ const Feed = () => {
     }
 
     const addTweet = () => {
-        const newTweet = ([ input, ...tweets])
-        setInput('')
-        setTweets(newTweet)
+        if (tweets.find(tweet => tweet === input)) {
+            console.log('error');
+        } else {
+            const newTweet = ([input, ...tweets])
+            setInput('')
+            setTweets(newTweet)
+        }
     }
 
-    const icons = [
-        <IoImageOutline />,
-        <BsFiletypeGif />,
-        <BsListUl />,
-        <BsEmojiSmile />,
-        <IoLocationOutline />,
+    const deleteTweet = (id) => {
+        const tweetToDelete = tweets.filter(tweet => tweet !== id);
+        setTweets(tweetToDelete);
+    }
+
+    const iconsInput = [
+        { id: 0, item: <IoImageOutline /> },
+        { id: 1, item: <BsFiletypeGif /> },
+        { id: 2, item: <BsListUl /> },
+        { id: 3, item: <BsEmojiSmile /> },
+        { id: 4, item: <IoLocationOutline /> },
     ]
 
     return (
@@ -40,24 +50,30 @@ const Feed = () => {
                 </div>
                 <div className='container-input-button'>
                     <div className='icon'>
-                        {icons.map((icon) => {
-                            return <p>{icon}</p>
+                        {iconsInput.map((icon) => {
+                            return <p key={icon.id}>{icon.item}</p>
                         })}
                     </div>
                     <button disabled={input === ''} onClick={addTweet}>Twittear</button>
                 </div>
             </div>
-                {tweets.map((data) => {
-                    return <div className='container-tweets'>
-                        <div>
-                            <img src={img} alt='egg' />
-                        </div>
-                        <div className='container-tweets-data'>
-                            <p><b>User </b> <span> @egg</span></p>
-                            <p className='tweet'>{data}</p>
+            {tweets.map((data) => {
+                return <div className='container-tweets'>
+                    <div>
+                        <img src={img} alt='egg' />
+                    </div>
+                    <div className='container-tweets-data'>
+                        <p><b>User </b> <span> @egg</span></p>
+                        <p className='tweet'>{data}</p>
+                        <div className='iconsTweet'>
+                            <FaRegComment className='comment' />
+                            <FaRetweet className='rt' />
+                            <FaRegHeart className='heart' />
+                            <FaRegTrashCan onClick={() => deleteTweet(data)} className='trash' />
                         </div>
                     </div>
-                })}
+                </div>
+            })}
         </div>
     )
 }

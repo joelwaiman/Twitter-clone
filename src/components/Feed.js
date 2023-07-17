@@ -22,7 +22,7 @@ const Feed = () => {
         if (tweets.find(tweet => tweet === input)) {
             console.log('error');
         } else {
-            const newTweet = {id: input, text: input}
+            const newTweet = { id: input, text: input }
             const newTweets = ([newTweet, ...tweets])
             setInput('')
             setTweets(newTweets)
@@ -64,31 +64,33 @@ const Feed = () => {
                     <button disabled={input === ''} onClick={addTweet}>Twittear</button>
                 </div>
             </div>
-            {tweets.length === 0 ?
-                <h1 className='empty'>
-                    ¡Aún no has dicho nada!
-                </h1>
-                :
-                <>
-                    {tweets.map((data) => {
-                        return <div key={data.id} className='container-tweets'>
-                            <div>
-                                <img src={img} alt='egg' />
-                            </div>
-                            <div className='container-tweets-data'>
-                                <p><b>User </b> <span> @egg</span></p>
-                                <p className='tweet'>{data.text}</p>
-                                <div className='iconsTweet'>
-                                    <FaRegComment className='comment' />
-                                    <FaRetweet className='rt' />
-                                    <FaRegHeart className='heart' />
-                                    <FaRegTrashCan onClick={() => deleteTweet(data)} className='trash' />
+            <>
+                {tweets.length === 0 ?
+                    <h1 className='empty'>
+                        ¡Aún no has dicho nada!
+                    </h1>
+                    :
+                    <>
+                        {tweets.map((data) => {
+                            return <div key={data.id} className='container-tweets'>
+                                <div>
+                                    <img src={img} alt='egg' />
+                                </div>
+                                <div className='container-tweets-data'>
+                                    <p><b>User </b> <span> @egg</span></p>
+                                    <p className='tweet'>{data.text}</p>
+                                    <div className='iconsTweet'>
+                                        <FaRegComment className='comment' />
+                                        <FaRetweet className='rt' />
+                                        <FaRegHeart className='heart' />
+                                        <FaRegTrashCan onClick={() => deleteTweet(data)} className='trash' />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    })}
-                </>
-            }
+                        })}
+                    </>
+                }
+            </>
         </div>
     )
 }

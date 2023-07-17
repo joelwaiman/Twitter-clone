@@ -63,7 +63,7 @@ const Feed = () => {
                     <button disabled={input === ''} onClick={addTweet}>Twittear</button>
                 </div>
             </div>
-            {tweets.length === 0?
+            {tweets.lenght === 0?
             (<h1 className='empty'>¡Aún no has dicho nada!</h1>)
             : 
             (tweets.map((data) => {

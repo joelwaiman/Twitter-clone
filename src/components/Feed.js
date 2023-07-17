@@ -19,7 +19,7 @@ const Feed = () => {
     }
 
     const addTweet = () => {
-        if (tweets.find(tweet => tweet === input)) {
+        if (tweets.find(tweet => tweet.text === input)) {
             console.log('error');
         } else {
             const newTweet = { id: input, text: input }

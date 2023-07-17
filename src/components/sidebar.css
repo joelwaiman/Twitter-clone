@@ -12,7 +12,7 @@
 .menu-logo{
     font-size: 30px;
     font-weight: 400;
-    padding: 12px;
+    padding: 12px 20px;
     margin: 10px 0;
     cursor: pointer;
 }
@@ -24,10 +24,13 @@
     font-weight: 400;
     line-height: 24px;
     font-family: 'Roboto';
-    padding: 12px;
+    padding: 12px 20px;
     margin: 5px 0;
-    cursor: pointer
-    ;
+    border-radius: 50px;
+    cursor: pointer;
+    &:hover{
+        background-color: #202020;
+    }
 }
 
 .menu-items-icon{

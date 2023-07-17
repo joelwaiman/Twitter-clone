@@ -63,30 +63,31 @@ const Feed = () => {
                     <button disabled={input === ''} onClick={addTweet}>Twittear</button>
                 </div>
             </div>
-                    <>
-                    {tweets.length !== 0?
-                        tweets.map((data) => {
-                            return <div className='container-tweets'>
-                                <div>
-                                    <img src={img} alt='egg' />
-                                </div>
-                                <div className='container-tweets-data'>
-                                    <p><b>User </b> <span> @egg</span></p>
-                                    <p className='tweet'>{data}</p>
-                                    <div className='iconsTweet'>
-                                        <FaRegComment className='comment' />
-                                        <FaRetweet className='rt' />
-                                        <FaRegHeart className='heart' />
-                                        <FaRegTrashCan onClick={() => deleteTweet(data)} className='trash' />
-                                    </div>
+            {tweets.length === 0 ?
+                <h1 className='empty'>
+                    ¡Aún no has dicho nada!
+                </h1>
+                :
+                <>
+                    {tweets.map((data) => {
+                        return <div className='container-tweets'>
+                            <div>
+                                <img src={img} alt='egg' />
+                            </div>
+                            <div className='container-tweets-data'>
+                                <p><b>User </b> <span> @egg</span></p>
+                                <p className='tweet'>{data}</p>
+                                <div className='iconsTweet'>
+                                    <FaRegComment className='comment' />
+                                    <FaRetweet className='rt' />
+                                    <FaRegHeart className='heart' />
+                                    <FaRegTrashCan onClick={() => deleteTweet(data)} className='trash' />
                                 </div>
                             </div>
-                        })
-                        :
-                        <h1 className='empty'>¡Aún no has dicho nada!</h1>
-                    }
-                    </>
-
+                        </div>
+                    })}
+                </>
+            }
         </div>
     )
 }

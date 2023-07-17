@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './feed.css'
-import { useState } from 'react';
 import img from '../assets/user.jpg'
 import { FaRetweet, FaRegComment, FaRegHeart, FaRegTrashCan } from "react-icons/fa6";
 import { IoLocationOutline, IoImageOutline } from "react-icons/io5";
@@ -9,7 +8,9 @@ import { BsFiletypeGif, BsListUl, BsEmojiSmile } from "react-icons/bs";
 
 const Feed = () => {
 
-    const [tweets, setTweets] = useState([]);
+    const storedTweets = JSON.parse(localStorage.getItem('tweets'))
+
+    const [tweets, setTweets] = useState(storedTweets);
     const [input, setInput] = useState('');
 
     const handlerTweets = (e) => {
@@ -31,6 +32,11 @@ const Feed = () => {
         const tweetToDelete = tweets.filter(tweet => tweet !== id);
         setTweets(tweetToDelete);
     }
+
+    useEffect(() => {
+        localStorage.setItem('tweets', JSON.stringify(tweets));
+    }, [tweets])
+
 
     const iconsInput = [
         { id: 0, item: <IoImageOutline /> },
@@ -57,7 +63,8 @@ const Feed = () => {
                     <button disabled={input === ''} onClick={addTweet}>Twittear</button>
                 </div>
             </div>
-            {tweets.map((data) => {
+            {tweets.length !== 0? 
+            (tweets.map((data) => {
                 return <div className='container-tweets'>
                     <div>
                         <img src={img} alt='egg' />
@@ -73,7 +80,7 @@ const Feed = () => {
                         </div>
                     </div>
                 </div>
-            })}
+            })) : <h1 className='empty'>¡Aún no has dicho nada!</h1>}
         </div>
     )
 }

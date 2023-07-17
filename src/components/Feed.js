@@ -8,9 +8,9 @@ import { BsFiletypeGif, BsListUl, BsEmojiSmile } from "react-icons/bs";
 
 const Feed = () => {
 
-    const storedTweets = JSON.parse(localStorage.getItem('tweets'))
+    // const storedTweets = JSON.parse(localStorage.getItem('tweets'))
 
-    const [tweets, setTweets] = useState(storedTweets);
+    const [tweets, setTweets] = useState([]);
     const [input, setInput] = useState('');
 
     const handlerTweets = (e) => {
@@ -34,9 +34,9 @@ const Feed = () => {
         setTweets(tweetToDelete);
     }
 
-    useEffect(() => {
-        localStorage.setItem('tweets', JSON.stringify(tweets));
-    }, [tweets])
+    // useEffect(() => {
+    //     localStorage.setItem('tweets', JSON.stringify(tweets));
+    // }, [tweets])
 
 
     const iconsInput = [
@@ -66,9 +66,9 @@ const Feed = () => {
             </div>
             <>
                 {tweets.length === 0 ?
-                    <h1 className='empty'>
+                    <h2 className='empty'>
                         ¡Aún no has dicho nada!
-                    </h1>
+                    </h2>
                     :
                     <>
                         {tweets.map((data) => {

@@ -14,7 +14,8 @@ const Feed = () => {
 
     useEffect(() => {
         const storedTweets = JSON.parse(localStorage.getItem('tweets'));
-        setTweets(storedTweets)
+        if(storedTweets){
+        setTweets(storedTweets)}
     }, [])
 
     const handlerTweets = (e) => {
@@ -66,7 +67,7 @@ const Feed = () => {
                 </div>
             </div>
             <>
-                {tweets.length === 0 ?
+                {(tweets.length) === 0 ?
                     <h2 className='empty'>
                         ¡Aún no has dicho nada!
                     </h2>

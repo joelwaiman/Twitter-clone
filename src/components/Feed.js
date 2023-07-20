@@ -8,10 +8,17 @@ import { BsFiletypeGif, BsListUl, BsEmojiSmile } from "react-icons/bs";
 
 const Feed = () => {
 
-    // const storedTweets = JSON.parse(localStorage.getItem('tweets'))
+    const storedTweets = JSON.parse(localStorage.getItem('tweets'));
+    console.log(storedTweets);
 
-    const [tweets, setTweets] = useState([]);
+    
+    const [tweets, setTweets] = useState(storedTweets);
     const [input, setInput] = useState('');
+
+
+    useEffect(() => {
+        localStorage.setItem('tweets', JSON.stringify(tweets));
+    }, [tweets])
 
     const handlerTweets = (e) => {
         const { value } = e.target;
@@ -33,11 +40,6 @@ const Feed = () => {
         const tweetToDelete = tweets.filter(tweet => tweet !== id);
         setTweets(tweetToDelete);
     }
-
-    // useEffect(() => {
-    //     localStorage.setItem('tweets', JSON.stringify(tweets));
-    // }, [tweets])
-
 
     const iconsInput = [
         { id: 0, item: <IoImageOutline /> },

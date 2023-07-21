@@ -16,6 +16,7 @@ const Feed = () => {
         const storedTweets = JSON.parse(localStorage.getItem('tweets'));
         if(storedTweets !== undefined){
         setTweets(storedTweets)}
+        console.log(storedTweets);
     }, [])
 
     const handlerTweets = (e) => {

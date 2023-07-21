@@ -14,7 +14,7 @@ const Feed = () => {
 
     useEffect(() => {
         const storedTweets = JSON.parse(localStorage.getItem('tweets'));
-        if(storedTweets !== undefined){
+        if(storedTweets){
         setTweets(storedTweets)}
         console.log(storedTweets);
     }, [])

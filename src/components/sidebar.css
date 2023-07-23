@@ -4,7 +4,6 @@
     align-items: flex-start;
     height: 100%;
     width: 18%;
-    padding: 1rem 0;
     list-style: none;
     color: #d1d3d4;
 }
@@ -36,4 +35,14 @@
 .menu-items-icon{
     font-size: 30px;
     padding-right: 20px;
+}
+
+@media(max-width: 475px){
+    .menu-logo{
+        margin: 0px;
+        color: #EB455F;
+    }
+    .menu-items{
+        display: none;
+    }
 }

@@ -88,6 +88,7 @@
     align-items: flex-start;
     border-bottom: solid 2px #202327;
     width: 100%;
+    animation: fade 1s;
 }
 
 .container-tweets img{
@@ -186,4 +187,9 @@
     .title{
         display: none;
     }
+}
+
+@keyframes fade{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
 }

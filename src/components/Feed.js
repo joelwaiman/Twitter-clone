@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './feed.css'
-import img from '../assets/user.jpg'
+
 import { FaRetweet, FaRegComment, FaRegHeart, FaRegTrashCan } from "react-icons/fa6";
 import { IoLocationOutline, IoImageOutline } from "react-icons/io5";
 import { BsFiletypeGif, BsListUl, BsEmojiSmile } from "react-icons/bs";
+import toast, { Toaster } from 'react-hot-toast';
+
+import './feed.css'
+import img from '../assets/user.jpg'
 
 
 const Feed = () => {
@@ -14,8 +17,9 @@ const Feed = () => {
 
     useEffect(() => {
         const storedTweets = JSON.parse(localStorage.getItem('tweets'));
-        if(storedTweets){
-        setTweets(storedTweets)}
+        if (storedTweets) {
+            setTweets(storedTweets)
+        }
         console.log(storedTweets);
     }, [])
 
@@ -26,7 +30,12 @@ const Feed = () => {
 
     const addTweet = () => {
         if (tweets.find(tweet => tweet.text === input)) {
-            console.log('error');
+            toast.error("Ups! Ya has dicho eso :s",{
+                style:{
+                    background: '#EB455F',
+                    color: 'white'
+                }
+            });
         } else {
             const newTweet = { id: input, text: input }
             const newTweets = ([newTweet, ...tweets])
@@ -55,6 +64,8 @@ const Feed = () => {
             <p className='title'>Inicio</p>
             <div className='container-input'>
                 <div className='container-input-tweet'>
+                    <Toaster
+                    position="bottom-center" />
                     <img className='user-img' src={img} alt='egg' />
                     <input className='input' onChange={handlerTweets} value={input} placeholder='¡¿Qué está pasando?!' />
                 </div>

@@ -48,6 +48,33 @@
     }
 }
 
+.preview-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.preview-image{
+    width: 100%;
+    border-radius: 20px;
+    background-size: cover;
+    height: fit-content;
+}
+
+.btn-delete-preview-image{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(14, 14, 14, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
 .container-input-button {
     display: flex;
     justify-content: space-between;
@@ -81,6 +108,9 @@
 
 .icon p {
     padding: 12px;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .container-tweets{
@@ -91,7 +121,7 @@
     animation: fade 1s;
 }
 
-.container-tweets img{
+.image-profile{
     border-radius: 50%;
     max-height: 40px;
     margin: 1rem;
@@ -123,6 +153,12 @@
     align-items: center;
     width: 75%;
     padding: 2% 0 0 0;
+}
+
+.tweet-img{
+    width: 95%;
+    border-radius: 10px;
+    margin: 5px 0;
 }
 
 .comment{

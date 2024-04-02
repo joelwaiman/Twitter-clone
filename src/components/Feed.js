@@ -20,7 +20,6 @@ const Feed = () => {
         if (storedTweets) {
             setTweets(storedTweets)
         }
-        console.log(storedTweets);
     }, [])
 
     const handlerTweets = (e) => {

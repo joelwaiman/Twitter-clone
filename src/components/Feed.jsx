@@ -57,8 +57,11 @@ const Feed = () => {
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
-        setImageFromPc(URL.createObjectURL(file));
-        setPreviewImage(URL.createObjectURL(file));
+        if(file){
+            setImageFromPc(URL.createObjectURL(file));
+            setPreviewImage(URL.createObjectURL(file));
+        }
+
     };
 
     const iconsInput = [
